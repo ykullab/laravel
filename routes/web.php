@@ -30,7 +30,7 @@ Route::prefix('dashboard')->group(function () {
     // ============================================= products
     Route::resource('products', ProductController::class)->except("show");
 
-    Route::get("products/show/{product:name}",[ProductController::class , "show"])->name("products.show");
+    Route::get("products/show/{product:slug}",[ProductController::class , "show"])->name("products.show");
 
 });
 

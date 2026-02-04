@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
 
@@ -33,6 +33,8 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $productData = $request->validated();
+
+        $productData["slug"] = Str::slug($productData["name"], '-');
 
         $product = Product::create($productData);
 
