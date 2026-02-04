@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get("products.show",[ProductController::class , "show"])->name("products.show");
+
 
 Route::prefix('dashboard')->group(function () {
 
@@ -26,7 +28,7 @@ Route::prefix('dashboard')->group(function () {
     Route::view('/', 'dashboard')->name('dashboard');
 
     // ============================================= products
-    Route::resource('products', ProductController::class);
+    Route::resource('products', ProductController::class)->except("show");
 
 });
 
