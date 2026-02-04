@@ -36,16 +36,23 @@
                                         <td>
                                             {{ number_format($product->price, 2) }}
                                         </td>
+                                        @php
+                                             $sulg = Illuminate\Support\Str::slug($product->name, '-');
+                                        @endphp
                                         <td>
                                             <div class="d-inline-flex">
-                                                <a href="{{ route('products.edit', $product) }}"
+                                               <a href="{{ route('products.show', $sulg) }}"
+                                                    class="btn btn-warning me-2">Show</a>
+                                                <a href="{{ route('products.edit', $sulg) }}"
                                                     class="btn btn-primary me-2">Edit</a>
+                                                    
                                                 <form action="{{ route('products.destroy', $product) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" onclick="return confirm('Are you sure?')"
                                                         class="btn btn-danger">Delete</button>
                                                 </form>
+                                                
                                             </div>
                                         </td>
                                     </tr>
