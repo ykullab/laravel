@@ -34,7 +34,7 @@ class ProductController extends Controller
     {
         $productData = $request->validated();
 
-        $productData["slug"] = Str::slug($productData["name"], '-');
+        // $productData["slug"] = Str::slug($productData["name"], '-');
 
         $product = Product::create($productData);
 
